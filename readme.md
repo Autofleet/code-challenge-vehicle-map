@@ -1,5 +1,6 @@
+<img src="./logo.png" width="250">
 
-# autofleet Code Challenge - Live Vehicle Map
+# Code Challenge - Live Vehicle Map
 
 Dear Future autofleet developer,
 
