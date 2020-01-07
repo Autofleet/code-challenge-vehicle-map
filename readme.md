@@ -16,7 +16,7 @@ The server can be built in Node.js, Python or Java, whichever you feel most comf
 The client will show a map and list of selected vehicles ids (if the user created a polygon), all server requests should be done with HTTP requests.
 The client can be built using any technology stack.
 
-The final product should be presented as a web URL (a live website) or a Docker.
+The final product should be presented as a web URL (a live website) or a Docker image.
 For deployment, you can use Heroku, Google App Engine or any other provider.
 
 Your task will be evaluated with the following criteria:
