@@ -10,6 +10,10 @@ def main():
     crucial_car_data=get_ids_locations(vehicle_data)
     vehicle_coordinates=get_lats_lngs(crucial_car_data[1])
     vehicle_ids=crucial_car_data[0]
+    dict_of_ids_locations={}
+    for lat, lng, id in zip(vehicle_coordinates[0], vehicle_coordinates[1], vehicle_ids):
+        dict_of_ids_locations[id]=[lat, lng]
+
     map=folium.Map(location=(51.5074, 0.1278), tiles="Stamen Terrain")
     fg=folium.FeatureGroup(name="vehicle_map")
     
