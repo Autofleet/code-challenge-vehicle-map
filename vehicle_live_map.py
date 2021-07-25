@@ -2,11 +2,17 @@ import json
 import folium
 import http.server
 import socketserver
-
+from flask import Flask
+from flask_restful import Resource, Api, reqparse
+import pandas as pd
+import ast
+app = Flask(__name__)
+api = Api(app)
 
 def main():
+    global dict_of_ids_locations
     with open('vehicles-location.json') as myfile:
-        vehicle_data=json.load(myfile)
+         vehicle_data=json.load(myfile)
     crucial_car_data=get_ids_locations(vehicle_data)
     vehicle_coordinates=get_lats_lngs(crucial_car_data[1])
     vehicle_ids=crucial_car_data[0]
@@ -27,6 +33,10 @@ def main():
     #with socketserver.TCPServer(("", PORT), Handler) as httpd:
         #print ("serving at port", PORT)
         #httpd.serve_forever()
+
+
+
+
     
 
 def get_ids_locations(list_of_dicts):
@@ -53,3 +63,18 @@ def get_lats_lngs(list_of_dicts):
                 longitudes.append(v)
     return latitudes, longitudes
 main()
+class ids(Resource):
+    def get(self):
+        return dict_of_ids_locations, 200
+
+        pass
+
+
+    class Locations(Resource):
+
+        pass
+
+api.add_resource(ids, '/ids')
+api.add_resource(Locations, '/locations')
+if __name__ == '__main__':
+    app.run()
