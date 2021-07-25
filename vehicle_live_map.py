@@ -21,12 +21,12 @@ def main():
         fg.add_child(folium.Marker(location=[lat, lng], popup=id, icon=folium.Icon(color='green')))
     map.add_child(fg)
     map.save("london.html")
-    PORT=8080
-    Handler=http.server.SimpleHTTPRequestHandler
+    #PORT=8080
+    #Handler=http.server.SimpleHTTPRequestHandler
 
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print ("serving at port", PORT)
-        httpd.serve_forever()
+    #with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        #print ("serving at port", PORT)
+        #httpd.serve_forever()
     
 
 def get_ids_locations(list_of_dicts):
