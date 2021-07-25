@@ -70,9 +70,9 @@ class ids(Resource):
         pass
 
 
-    class Locations(Resource):
+class Locations(Resource):
 
-        pass
+    pass
 
 api.add_resource(ids, '/ids')
 api.add_resource(Locations, '/locations')
