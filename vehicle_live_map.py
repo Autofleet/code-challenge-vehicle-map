@@ -6,11 +6,12 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 import pandas as pd
 import ast
-app = Flask(__name__)
-api = Api(app)
+
 
 def main():
-    global dict_of_ids_locations
+    global vehicle_ids
+    global vehicle_data
+    global map
     with open('vehicles-location.json') as myfile:
          vehicle_data=json.load(myfile)
     crucial_car_data=get_ids_locations(vehicle_data)
@@ -27,12 +28,12 @@ def main():
         fg.add_child(folium.Marker(location=[lat, lng], popup=id, icon=folium.Icon(color='green')))
     map.add_child(fg)
     map.save("london.html")
-    #PORT=8080
-    #Handler=http.server.SimpleHTTPRequestHandler
+    PORT=8080
+    Handler=http.server.SimpleHTTPRequestHandler
 
-    #with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        #print ("serving at port", PORT)
-        #httpd.serve_forever()
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        print ("serving at port", PORT)
+        httpd.serve_forever()
 
 
 
@@ -63,18 +64,3 @@ def get_lats_lngs(list_of_dicts):
                 longitudes.append(v)
     return latitudes, longitudes
 main()
-class ids(Resource):
-    def get(self):
-        return dict_of_ids_locations, 200
-
-        pass
-
-
-class Locations(Resource):
-
-    pass
-
-api.add_resource(ids, '/ids')
-api.add_resource(Locations, '/locations')
-if __name__ == '__main__':
-    app.run()
