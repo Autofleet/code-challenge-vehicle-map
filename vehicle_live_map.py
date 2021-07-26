@@ -21,19 +21,19 @@ def main():
     for lat, lng, id in zip(vehicle_coordinates[0], vehicle_coordinates[1], vehicle_ids):
         dict_of_ids_locations[id]=[lat, lng]
 
-    map=folium.Map(location=(51.5074, 0.1278), tiles="Stamen Terrain")
-    fg=folium.FeatureGroup(name="vehicle_map")
+    #map=folium.Map(location=(51.5074, 0.1278), tiles="Stamen Terrain")
+    #fg=folium.FeatureGroup(name="vehicle_map")
     
-    for lat, lng, id in zip(vehicle_coordinates[0], vehicle_coordinates[1], vehicle_ids):
-        fg.add_child(folium.Marker(location=[lat, lng], popup=id, icon=folium.Icon(color='green')))
-    map.add_child(fg)
-    map.save("london.html")
-    PORT=8080
-    Handler=http.server.SimpleHTTPRequestHandler
+    #for lat, lng, id in zip(vehicle_coordinates[0], vehicle_coordinates[1], vehicle_ids):
+        #fg.add_child(folium.Marker(location=[lat, lng], popup=id, icon=folium.Icon(color='green')))
+    #map.add_child(fg)
+    #map.save("london.html")
+    #PORT=8080
+    #Handler=http.server.SimpleHTTPRequestHandler
 
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print ("serving at port", PORT)
-        httpd.serve_forever()
+    #with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        #print ("serving at port", PORT)
+        #httpd.serve_forever()
 
 
 
