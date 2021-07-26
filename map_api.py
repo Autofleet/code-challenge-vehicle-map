@@ -35,9 +35,7 @@ with open('vehicles-location.json') as myfile:
 crucial_car_data=get_ids_locations(vehicle_data)
 vehicle_coordinates=get_lats_lngs(crucial_car_data[1])
 vehicle_ids=crucial_car_data[0]
-lats_and_lngs={}
-for lat, lng in zip(vehicle_coordinates[0], vehicle_coordinates[1]):
-    lats_and_lngs[lat]=lng
+
 map=folium.Map(location=(51.5074, 0.1278), tiles="Stamen Terrain")
 fg=folium.FeatureGroup(name="vehicle_map")
     
@@ -54,7 +52,7 @@ class ids(Resource):
 
 class Locations(Resource):
     def get(self):
-        return lats_and_lngs
+        return vehicle_coordinates, 200
     pass
     
 api.add_resource(ids, '/ids')
