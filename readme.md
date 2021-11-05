@@ -4,7 +4,7 @@
 
 Dear Future autofleet developer,
 
-This challenge is our way to know you better before we move on to the next phase, if you are here we already talked on the phone, feel free to call us back if you need any help.
+This challenge is our way to know you better before we move on to the next phase, feel free to call us back if you need any help.
 
 In this repository you will find the vehicles_location.json file, this file includes more than 1000 vehicle locations in London.
 
